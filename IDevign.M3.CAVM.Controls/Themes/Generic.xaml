@@ -1,0 +1,83 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:IDevign.M3.CAVM.Controls" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    mc:Ignorable="d">
+
+    <local:PictureViewerViewModel x:Key="controlViewModel" />
+
+    <Style TargetType="{x:Type local:PictureViewer}">
+		<!-- Set the internal control ViewModel -->
+		<Setter Property="Context" Value="{StaticResource controlViewModel}" /> 
+		<!-- Set the default template -->
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type local:PictureViewer}">                   
+                    
+					<Border Background="{TemplateBinding Background}"
+						BorderBrush="{TemplateBinding BorderBrush}"
+						BorderThickness="{TemplateBinding BorderThickness}" d:DesignWidth="272.333" d:DesignHeight="156"  >
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="10" />
+								<RowDefinition Height="*" />
+								<RowDefinition Height="Auto" />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="220" />
+								<ColumnDefinition Width="*" />
+							</Grid.ColumnDefinitions>
+
+							<!--<Border Grid.Row="2" Grid.RowSpan="1" Grid.Column="0" Width="Auto" Margin="10,0,5.556,5" VerticalAlignment="Stretch" BorderBrush="White" BorderThickness="1">-->
+                            <ListView ItemsSource="{TemplateBinding ImageList}"
+                                        Grid.Row="2" Grid.RowSpan="1" Grid.Column="0" Width="Auto" Margin="10,0,5.556,5" VerticalAlignment="Stretch" BorderBrush="White" BorderThickness="1"
+										Background="Transparent" 
+										IsSynchronizedWithCurrentItem="True"
+										ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+										Style="{DynamicResource CutstomListViewStyle}" 
+										ItemContainerStyle="{DynamicResource CustomListViewItemStyle}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Image Grid.Row="0" Grid.RowSpan="2" Source="{Binding}"  VerticalAlignment="Top" HorizontalAlignment="Left" />
+                                            <Border Background="#99000000" Grid.Row="1">
+                                                <TextBlock Margin="5" Text="{Binding}" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="9" FontStyle="Italic" TextTrimming="CharacterEllipsis" Foreground="#FFE8008C" />
+                                            </Border>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel Orientation="Horizontal"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                            </ListView>
+
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" >                                
+                                <Button Margin="5,5,0,0" Command="{Binding Context.ChangeOrderCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{x:Static local:SortDirection.Regular}" Height="50" Style="{DynamicResource ImageButtonStyle}">
+                                    <Image Source="pack://application:,,,/IDevign.M3.CAVM.Controls;component/Assets/down.png" Stretch="Fill" />									
+								</Button>
+                                <Button Margin="5,5,0,0" Command="{Binding Context.ChangeOrderCommand, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{x:Static local:SortDirection.Reversed}" Height="50" Style="{DynamicResource ImageButtonStyle}">
+									<Image Source="pack://application:,,,/IDevign.M3.CAVM.Controls;component/Assets/up.png" Stretch="Fill"/>
+								</Button>
+							</StackPanel>
+														
+							<Border Grid.Row="2" Grid.RowSpan="3" Grid.Column="1" Margin="5,0,5,5" VerticalAlignment="Stretch" BorderBrush="Transparent" BorderThickness="0">
+								<Image Source="{Binding ImageList/, RelativeSource={RelativeSource TemplatedParent}}" Stretch="UniformToFill"  />
+							</Border>
+							
+						</Grid>
+                        
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+</ResourceDictionary>

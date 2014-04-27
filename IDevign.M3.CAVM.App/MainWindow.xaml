@@ -1,0 +1,22 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:IDevign.M3.CAVM.Controls;assembly=IDevign.M3.CAVM.Controls"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="IDevign.M3.CAVM.App.MainWindow"
+        Title="MainWindow" Height="600" Width="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Image Source="pack://siteoforigin:,,,/Assets/gaia10bg.jpg" Stretch="Fill" Grid.RowSpan="2" Margin="0,0,-2,0" />
+        <Rectangle Grid.RowSpan="2" Fill="#AA000000"/>
+
+        <TextBlock Text="controls and viewmodels" HorizontalAlignment="Right" Foreground="#FF535353" FontSize="32" Width="351" Grid.RowSpan="2" Margin="0,1,2,0" />
+        <TextBlock Text="controls and viewmodels" HorizontalAlignment="Right" Foreground="White" FontSize="32" Width="351" Grid.RowSpan="2" Margin="0,0,3,0" />
+        
+        <controls:PictureViewer ImageList="{Binding Images}" Grid.Row="1" Margin="0,-52,0,0" />
+
+
+    </Grid>
+</Window>

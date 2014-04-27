@@ -1,0 +1,14 @@
+﻿<Application x:Class="IDevign.M3.CAVM.App.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" >
+    <Application.Resources>
+         
+    	<ResourceDictionary>
+    		<ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/IDevign.M3.CAVM.Controls;component/Themes/ListViewStyles.xaml"/>
+                <ResourceDictionary Source="/IDevign.M3.CAVM.Controls;component/ButtonStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+    	</ResourceDictionary>
+         
+    </Application.Resources>
+</Application>
